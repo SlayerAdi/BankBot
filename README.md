@@ -49,8 +49,6 @@ InfyBot v3 is an enterprise-grade AI chatbot platform built with a **FastAPI** b
 - 📊 **Admin analytics dashboard** — KPIs, intent charts, paginated message logs, CSV export
 - 👥 **Granular RBAC** — Admin / Agent / Viewer roles + separate dashboard access levels
 - 💬 **Multi-session chat** — Create, switch between, and delete chat sessions
-- 👍👎 **Per-message feedback** — Thumbs up/down rating on bot responses
-- 🚦 **Rate limiting** — 200 req/min per IP via slowapi
 - 📁 **CSV export** — Export filtered message logs and user lists
 - ⚡ **Async MySQL** — Non-blocking aiomysql connection pool
 

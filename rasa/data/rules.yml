@@ -1,0 +1,410 @@
+version: "3.1"
+
+rules:
+
+# ==============================
+# BASIC RULES
+# ==============================
+
+- rule: greet
+  steps:
+    - intent: greet
+    - action: utter_greet
+
+- rule: goodbye
+  steps:
+    - intent: goodbye
+    - action: utter_goodbye
+
+- rule: thank you
+  steps:
+    - intent: thank_you
+    - action: utter_thank_you
+
+- rule: help
+  steps:
+    - intent: help
+    - action: utter_help
+
+- rule: bot challenge
+  steps:
+    - intent: bot_challenge
+    - action: utter_bot_challenge
+
+- rule: out of scope
+  steps:
+    - intent: out_of_scope
+    - action: utter_out_of_scope
+
+- rule: fallback
+  steps:
+    - intent: nlu_fallback
+    - action: utter_default
+
+
+# ==============================
+# ACCOUNT / TRANSACTIONS
+# ==============================
+
+- rule: check balance
+  steps:
+    - intent: check_balance
+    - action: action_check_balance
+
+- rule: account details
+  steps:
+    - intent: view_account_details
+    - action: action_view_account_details
+
+- rule: all accounts
+  steps:
+    - intent: view_all_accounts
+    - action: action_view_all_accounts
+
+- rule: view transactions
+  steps:
+    - intent: view_transactions
+    - action: action_view_transactions
+
+- rule: download statement
+  steps:
+    - intent: download_statement
+    - action: action_download_statement
+
+- rule: dispute transaction
+  steps:
+    - intent: dispute_transaction
+    - action: action_dispute_transaction
+
+
+# ==============================
+# TRANSFER CONFIRMATION FLOW
+# ==============================
+
+- rule: ask transfer confirmation
+  steps:
+    - intent: transfer_money
+    - action: utter_ask_confirm_transfer
+
+- rule: confirm transfer
+  steps:
+    - intent: confirm_transfer
+    - action: action_transfer_money
+    - action: utter_transfer_confirmed
+
+- rule: deny transfer
+  steps:
+    - intent: deny_transfer
+    - action: utter_transfer_cancelled
+
+- rule: view scheduled transfers
+  steps:
+    - intent: view_scheduled_transfers
+    - action: action_view_scheduled_transfers
+
+- rule: cancel transfer
+  steps:
+    - intent: cancel_transfer
+    - action: action_cancel_transfer
+
+
+# ==============================
+# BILL PAYMENT CONFIRMATION FLOW
+# ==============================
+
+- rule: ask bill payment confirmation
+  steps:
+    - intent: pay_bill
+    - action: utter_ask_confirm_bill_payment
+
+- rule: confirm bill payment
+  steps:
+    - intent: confirm_bill_payment
+    - action: action_pay_bill
+    - action: utter_bill_payment_confirmed
+
+- rule: deny bill payment
+  steps:
+    - intent: deny_bill_payment
+    - action: utter_bill_payment_cancelled
+
+- rule: view bills
+  steps:
+    - intent: view_bills
+    - action: action_view_bills
+
+- rule: setup autopay
+  steps:
+    - intent: setup_autopay
+    - action: action_setup_autopay
+
+
+# ==============================
+# CARD SERVICES
+# ==============================
+
+- rule: cards menu
+  steps:
+    - intent: cards_menu
+    - action: utter_cards_menu
+
+- rule: view cards
+  steps:
+    - intent: view_cards
+    - action: action_view_cards
+
+- rule: card details
+  steps:
+    - intent: view_card_details
+    - action: action_view_cards
+
+- rule: ask freeze confirmation
+  steps:
+    - intent: freeze_card
+    - action: utter_ask_confirm_freeze_card
+
+- rule: confirm freeze card
+  steps:
+    - intent: confirm_freeze_card
+    - action: action_freeze_card
+    - action: utter_freeze_card_confirmed
+
+- rule: deny freeze card
+  steps:
+    - intent: deny_freeze_card
+    - action: utter_freeze_card_cancelled
+
+- rule: ask unfreeze confirmation
+  steps:
+    - intent: unfreeze_card
+    - action: utter_ask_confirm_unfreeze_card
+
+- rule: confirm unfreeze card
+  steps:
+    - intent: confirm_unfreeze_card
+    - action: action_unfreeze_card
+    - action: utter_unfreeze_card_confirmed
+
+- rule: deny unfreeze card
+  steps:
+    - intent: deny_unfreeze_card
+    - action: utter_unfreeze_card_cancelled
+
+- rule: report lost card
+  steps:
+    - intent: report_lost_card
+    - action: action_report_card
+
+- rule: report stolen card
+  steps:
+    - intent: report_stolen_card
+    - action: action_report_card
+
+- rule: activate card
+  steps:
+    - intent: activate_card
+    - action: action_activate_card
+
+- rule: request new card
+  steps:
+    - intent: request_new_card
+    - action: action_request_new_card
+
+- rule: change card pin
+  steps:
+    - intent: change_card_pin
+    - action: action_change_card_pin
+
+- rule: set card limit
+  steps:
+    - intent: set_card_limit
+    - action: action_set_card_limit
+
+
+# ==============================
+# LOANS
+# ==============================
+
+- rule: loans menu
+  steps:
+    - intent: loans_menu
+    - action: utter_loans_menu
+
+- rule: loan details
+  steps:
+    - intent: view_loan_details
+    - action: utter_loans_menu
+
+- rule: loan balance
+  steps:
+    - intent: check_loan_balance
+    - action: action_check_loan_balance
+
+- rule: loan repayment
+  steps:
+    - intent: view_loan_repayment
+    - action: action_view_loan_repayment
+
+- rule: apply for loan
+  steps:
+    - intent: apply_for_loan
+    - action: action_apply_for_loan
+
+- rule: ask loan payment confirmation
+  steps:
+    - intent: make_loan_payment
+    - action: utter_ask_confirm_loan_payment
+
+- rule: confirm loan payment
+  steps:
+    - intent: confirm_loan_payment
+    - action: action_make_loan_payment
+    - action: utter_loan_payment_confirmed
+
+- rule: deny loan payment
+  steps:
+    - intent: deny_loan_payment
+    - action: utter_loan_payment_cancelled
+
+- rule: loan interest
+  steps:
+    - intent: view_loan_interest_rate
+    - action: action_view_loan_interest_rate
+
+- rule: loan eligibility
+  steps:
+    - intent: check_loan_eligibility
+    - action: utter_check_loan_eligibility
+
+- rule: loan deferment
+  steps:
+    - intent: request_loan_deferment
+    - action: action_request_loan_deferment
+
+
+# ==============================
+# INVESTMENTS
+# ==============================
+
+- rule: investment menu
+  steps:
+    - intent: investment_menu
+    - action: utter_investment_menu
+
+- rule: view portfolio
+  steps:
+    - intent: view_portfolio
+    - action: action_view_portfolio
+
+- rule: investment performance
+  steps:
+    - intent: view_investment_performance
+    - action: action_view_investment_performance
+
+- rule: market rates
+  steps:
+    - intent: view_market_rates
+    - action: action_view_market_rates
+
+- rule: dividends
+  steps:
+    - intent: view_dividends
+    - action: action_view_dividends
+
+- rule: setup investment plan
+  steps:
+    - intent: setup_investment_plan
+    - action: action_setup_investment_plan
+
+- rule: buy stocks
+  steps:
+    - intent: buy_stocks
+    - action: action_buy_stocks
+
+- rule: sell stocks
+  steps:
+    - intent: sell_stocks
+    - action: action_sell_stocks
+
+
+# ==============================
+# FIXED DEPOSITS
+# ==============================
+
+- rule: view fixed deposits
+  steps:
+    - intent: view_fixed_deposits
+    - action: action_view_fixed_deposits
+
+- rule: fd rate
+  steps:
+    - intent: view_fd_interest_rate
+    - action: action_view_fixed_deposits
+
+- rule: open fd
+  steps:
+    - intent: open_fixed_deposit
+    - action: action_open_fixed_deposit
+
+- rule: close fd
+  steps:
+    - intent: close_fixed_deposit
+    - action: action_close_fixed_deposit
+
+- rule: renew fd
+  steps:
+    - intent: renew_fixed_deposit
+    - action: action_renew_fixed_deposit
+
+
+# ==============================
+# BRANCH / ATM
+# ==============================
+
+- rule: find branch
+  steps:
+    - intent: find_branch
+    - action: action_find_branch
+
+- rule: provide branch location followup
+  condition:
+    - slot_was_set:
+        - awaiting_branch_location: true
+  steps:
+    - intent: provide_branch_location
+    - action: action_find_branch
+
+- rule: find atm
+  steps:
+    - intent: find_atm
+    - action: action_find_atm
+
+
+# ==============================
+# SUPPORT / OTHER
+# ==============================
+
+- rule: exchange rates
+  steps:
+    - intent: view_exchange_rates
+    - action: action_view_exchange_rates
+
+- rule: contact support
+  steps:
+    - intent: contact_support
+    - action: utter_contact_support
+
+- rule: report fraud
+  steps:
+    - intent: report_fraud
+    - action: utter_report_fraud
+
+- rule: set alert
+  steps:
+    - intent: set_alert
+    - action: action_set_alert
+
+- rule: manage notifications
+  steps:
+    - intent: manage_notifications
+    - action: utter_manage_notifications

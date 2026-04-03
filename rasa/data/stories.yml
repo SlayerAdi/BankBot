@@ -1,0 +1,178 @@
+version: "3.1"
+
+stories:
+
+# ==============================
+# BASIC MULTI-TURN FLOWS
+# ==============================
+
+- story: greet then help
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: help
+    - action: utter_help
+
+- story: balance then transactions
+  steps:
+    - intent: check_balance
+    - action: action_check_balance
+    - intent: view_transactions
+    - action: action_view_transactions
+
+- story: branch followup flow
+  steps:
+    - intent: find_branch
+    - action: action_find_branch
+    - intent: provide_branch_location
+    - action: action_find_branch
+
+- story: loan eligibility path
+  steps:
+    - intent: check_loan_eligibility
+    - action: utter_check_loan_eligibility
+
+
+# ==============================
+# CARD CONFIRMATION FLOWS
+# ==============================
+
+- story: freeze card confirmed
+  steps:
+    - intent: freeze_card
+    - action: utter_ask_confirm_freeze_card
+    - intent: confirm_freeze_card
+    - action: action_freeze_card
+    - action: utter_freeze_card_confirmed
+
+- story: freeze card denied
+  steps:
+    - intent: freeze_card
+    - action: utter_ask_confirm_freeze_card
+    - intent: deny_freeze_card
+    - action: utter_freeze_card_cancelled
+
+- story: unfreeze card confirmed
+  steps:
+    - intent: unfreeze_card
+    - action: utter_ask_confirm_unfreeze_card
+    - intent: confirm_unfreeze_card
+    - action: action_unfreeze_card
+    - action: utter_unfreeze_card_confirmed
+
+- story: unfreeze card denied
+  steps:
+    - intent: unfreeze_card
+    - action: utter_ask_confirm_unfreeze_card
+    - intent: deny_unfreeze_card
+    - action: utter_unfreeze_card_cancelled
+
+
+# ==============================
+# FRAUD + CARD FLOW
+# ==============================
+
+- story: fraud then freeze confirmed
+  steps:
+    - intent: report_fraud
+    - action: utter_report_fraud
+    - intent: freeze_card
+    - action: utter_ask_confirm_freeze_card
+    - intent: confirm_freeze_card
+    - action: action_freeze_card
+    - action: utter_freeze_card_confirmed
+
+- story: fraud then freeze denied
+  steps:
+    - intent: report_fraud
+    - action: utter_report_fraud
+    - intent: freeze_card
+    - action: utter_ask_confirm_freeze_card
+    - intent: deny_freeze_card
+    - action: utter_freeze_card_cancelled
+
+
+# ==============================
+# TRANSFER FLOWS
+# ==============================
+
+- story: transfer confirmed
+  steps:
+    - intent: transfer_money
+    - action: utter_ask_confirm_transfer
+    - intent: confirm_transfer
+    - action: action_transfer_money
+    - action: utter_transfer_confirmed
+
+- story: transfer denied
+  steps:
+    - intent: transfer_money
+    - action: utter_ask_confirm_transfer
+    - intent: deny_transfer
+    - action: utter_transfer_cancelled
+
+
+# ==============================
+# BILL PAYMENT FLOWS
+# ==============================
+
+- story: bill confirmed
+  steps:
+    - intent: pay_bill
+    - action: utter_ask_confirm_bill_payment
+    - intent: confirm_bill_payment
+    - action: action_pay_bill
+    - action: utter_bill_payment_confirmed
+
+- story: bill denied
+  steps:
+    - intent: pay_bill
+    - action: utter_ask_confirm_bill_payment
+    - intent: deny_bill_payment
+    - action: utter_bill_payment_cancelled
+
+
+# ==============================
+# LOAN PAYMENT FLOWS
+# ==============================
+
+- story: loan confirmed
+  steps:
+    - intent: make_loan_payment
+    - action: utter_ask_confirm_loan_payment
+    - intent: confirm_loan_payment
+    - action: action_make_loan_payment
+    - action: utter_loan_payment_confirmed
+
+- story: loan denied
+  steps:
+    - intent: make_loan_payment
+    - action: utter_ask_confirm_loan_payment
+    - intent: deny_loan_payment
+    - action: utter_loan_payment_cancelled
+
+
+# ==============================
+# BUSINESS SERVICE FLOWS
+# ==============================
+
+- story: fd flow
+  steps:
+    - intent: view_fixed_deposits
+    - action: action_view_fixed_deposits
+    - intent: renew_fixed_deposit
+    - action: action_renew_fixed_deposit
+
+- story: loans flow
+  steps:
+    - intent: view_loan_details
+    - action: utter_loans_menu
+    - intent: view_loan_interest_rate
+    - action: action_view_loan_interest_rate
+
+- story: investment flow
+  steps:
+    - intent: view_portfolio
+    - action: action_view_portfolio
+    - intent: view_investment_performance
+    - action: action_view_investment_performance

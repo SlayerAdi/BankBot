@@ -1,0 +1,524 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - thank_you
+  - help
+  - bot_challenge
+  - out_of_scope
+
+  - check_balance
+  - view_account_details
+  - view_all_accounts
+  - view_transactions
+  - download_statement
+  - dispute_transaction
+
+  - transfer_money
+  - view_scheduled_transfers
+  - cancel_transfer
+
+  - pay_bill
+  - view_bills
+  - setup_autopay
+
+  - view_cards
+  - view_card_details
+  - freeze_card
+  - unfreeze_card
+  - report_lost_card
+  - report_stolen_card
+  - activate_card
+  - request_new_card
+  - change_card_pin
+  - set_card_limit
+  - cards_menu
+
+  - check_loan_balance
+  - view_loan_details
+  - view_loan_repayment
+  - apply_for_loan
+  - make_loan_payment
+  - view_loan_interest_rate
+  - check_loan_eligibility
+  - request_loan_deferment
+  - loans_menu
+
+  - view_portfolio
+  - view_investment_performance
+  - view_market_rates
+  - view_dividends
+  - setup_investment_plan
+  - buy_stocks
+  - sell_stocks
+  - investment_menu
+
+  - view_fixed_deposits
+  - view_fd_interest_rate
+  - open_fixed_deposit
+  - close_fixed_deposit
+  - renew_fixed_deposit
+
+  - find_branch
+  - provide_branch_location
+  - find_atm
+
+  - view_exchange_rates
+  - contact_support
+  - report_fraud
+  - set_alert
+  - manage_notifications
+
+  - confirm_transfer
+  - deny_transfer
+  - confirm_freeze_card
+  - deny_freeze_card
+  - confirm_unfreeze_card
+  - deny_unfreeze_card
+  - confirm_bill_payment
+  - deny_bill_payment
+  - confirm_loan_payment
+  - deny_loan_payment
+
+entities:
+  - amount
+  - recipient_name
+  - bill_type
+  - merchant_name
+  - loan_type
+  - account_type
+  - branch_location
+
+slots:
+  amount:
+    type: float
+    mappings:
+      - type: from_entity
+        entity: amount
+
+  recipient_name:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: recipient_name
+
+  bill_type:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: bill_type
+
+  merchant_name:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: merchant_name
+
+  loan_type:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: loan_type
+
+  branch_location:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: branch_location
+
+  awaiting_branch_location:
+    type: bool
+    influence_conversation: true
+    mappings:
+      - type: custom
+  
+  account_type:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: account_type
+
+responses:
+  # ==============================
+  # BASIC
+  # ==============================
+
+  utter_greet:
+    - text: "Hello 👋 Welcome to **Aditya Bank Assistant**. How can I help you today?"
+
+  utter_goodbye:
+    - text: "Goodbye 👋 Have a great day!"
+    - text: "Thanks for banking with Aditya Bank. See you soon!"
+
+  utter_thank_you:
+    - text: "You're welcome 😊 Is there anything else I can help you with?"
+
+  utter_help:
+    - text: |
+        I can help you with:
+
+        - 💰 Balance & account details
+        - 📋 Transactions & statements
+        - 💳 Cards (freeze/unfreeze/report)
+        - 🏦 Loans & EMI
+        - 📈 Investments
+        - 📂 Fixed Deposits
+        - 💸 Transfers & bill payments
+        - 🏧 Find branch or ATM
+        - 🔔 Alerts & notifications
+
+  utter_out_of_scope:
+    - text: "I can only help with Aditya Bank services."
+
+  utter_default:
+    - text: "I didn’t quite understand that. Type **help** to see what I can do."
+
+  utter_bot_challenge:
+    - text: "I'm **Aditya Bank Assistant** 🤖"
+
+  utter_affirm:
+    - text: "Okay 👍"
+
+  utter_deny:
+    - text: "Alright, cancelled."
+
+  # ==============================
+  # SUPPORT / CONTACT
+  # ==============================
+
+  utter_contact_support:
+    - text: |
+        📞 1800-123-9090
+        📧 support@adityabank.com
+
+  utter_report_fraud:
+    - text: |
+        🚨 Please freeze your card immediately and contact support.
+
+  utter_manage_notifications:
+    - text: "You can manage SMS, email, and app notifications from your banking preferences."
+
+  utter_set_alert:
+    - text: "I can help you configure account alerts and notification preferences."
+
+  utter_view_exchange_rates:
+    - text: "Here are the latest exchange rate details available for your banking services."
+
+  # ==============================
+  # ACCOUNT / TRANSACTIONS
+  # ==============================
+
+  utter_view_account_details:
+    - text: "Here are your account details."
+
+  utter_view_all_accounts:
+    - text: "Here are all your linked bank accounts."
+
+  utter_view_transactions:
+    - text: "Fetching your recent transactions."
+
+  utter_download_statement:
+    - text: "Generating your account statement."
+
+  utter_dispute_transaction:
+    - text: "Please provide the transaction details you want to dispute."
+
+  utter_check_balance:
+    - text: "Let me check your available balance."
+
+  # ==============================
+  # TRANSFERS
+  # ==============================
+
+  utter_transfer_money:
+    - text: "Please share the recipient name and transfer amount."
+
+  utter_view_scheduled_transfers:
+    - text: "Here are your scheduled or recurring transfers."
+
+  utter_cancel_transfer:
+    - text: "Please select the transfer you want to cancel."
+
+  utter_ask_confirm_transfer:
+    - text: |
+        Please confirm the transfer.
+
+        Reply with:
+        - yes transfer
+        - no cancel transfer
+
+  utter_transfer_confirmed:
+    - text: "Transfer confirmed successfully."
+
+  utter_transfer_cancelled:
+    - text: "Transfer request cancelled."
+
+  # ==============================
+  # BILL PAYMENTS
+  # ==============================
+
+  utter_pay_bill:
+    - text: "Please provide the bill details to continue."
+
+  utter_view_bills:
+    - text: "Here are your pending and upcoming bills."
+
+  utter_setup_autopay:
+    - text: "Autopay setup has been started."
+
+  utter_ask_confirm_bill_payment:
+    - text: |
+        Please confirm the bill payment.
+
+        Reply with:
+        - yes pay bill
+        - no cancel payment
+
+  utter_bill_payment_confirmed:
+    - text: "Bill payment confirmed successfully."
+
+  utter_bill_payment_cancelled:
+    - text: "Bill payment cancelled."
+
+  # ==============================
+  # CARD SERVICES
+  # ==============================
+
+  utter_cards_menu:
+    - text: |
+        💳 Card Services:
+        - Show cards
+        - Freeze/unfreeze
+        - Lost/stolen report
+        - Card PIN / limits
+
+  utter_view_card_details:
+    - text: "Here are your card details."
+
+  utter_view_cards:
+    - text: "Fetching your linked debit and credit cards."
+
+  utter_report_lost_card:
+    - text: "Your lost card request has been registered and the card will be blocked."
+
+  utter_report_stolen_card:
+    - text: "Your stolen card has been blocked immediately for safety."
+
+  utter_activate_card:
+    - text: "Card activation is in progress."
+
+  utter_request_new_card:
+    - text: "Your request for a new card has been submitted."
+
+  utter_change_card_pin:
+    - text: "Follow the secure PIN reset steps to update your card PIN."
+
+  utter_set_card_limit:
+    - text: "Please enter the new spending limit for your card."
+
+  utter_ask_confirm_freeze_card:
+    - text: |
+        Are you sure you want to freeze your card?
+
+        Reply with:
+        - yes freeze card
+        - no don't freeze
+
+  utter_freeze_card_confirmed:
+    - text: "Your card has been frozen successfully."
+
+  utter_freeze_card_cancelled:
+    - text: "Freeze card request cancelled."
+
+  utter_ask_confirm_unfreeze_card:
+    - text: |
+        Are you sure you want to unfreeze your card?
+
+        Reply with:
+        - yes unfreeze card
+        - no don't unfreeze
+
+  utter_unfreeze_card_confirmed:
+    - text: "Your card has been unfrozen successfully."
+
+  utter_unfreeze_card_cancelled:
+    - text: "Unfreeze card request cancelled."
+
+  # ==============================
+  # LOANS
+  # ==============================
+
+  utter_loans_menu:
+    - text: |
+        🏦 Loan Services:
+        - Check loan balance
+        - EMI schedule
+        - Interest rates
+        - Apply for loan
+        - Eligibility details
+
+  utter_check_loan_eligibility:
+    - text: |
+        ✅ Loan Eligibility:
+        - Age 18+
+        - PAN & ID proof
+        - Income proof
+        - Good credit history
+
+  utter_check_loan_balance:
+    - text: "Fetching your outstanding loan balance."
+
+  utter_view_loan_repayment:
+    - text: "Showing your EMI and repayment schedule."
+
+  utter_apply_for_loan:
+    - text: "Please provide the loan type and amount to begin your application."
+
+  utter_make_loan_payment:
+    - text: "Preparing your loan payment."
+
+  utter_request_loan_deferment:
+    - text: "Your loan deferment request has been noted."
+
+  utter_view_loan_interest_rate:
+    - text: "Here are the latest loan interest rates."
+
+  utter_view_loan_details:
+    - text: "Here are your loan details and available loan services."
+
+  utter_ask_confirm_loan_payment:
+    - text: |
+        Please confirm the loan payment.
+
+        Reply with:
+        - yes pay loan
+        - no cancel loan payment
+
+  utter_loan_payment_confirmed:
+    - text: "Loan payment confirmed successfully."
+
+  utter_loan_payment_cancelled:
+    - text: "Loan payment cancelled."
+
+  # ==============================
+  # INVESTMENTS
+  # ==============================
+
+  utter_investment_menu:
+    - text: |
+        📈 Investment Services:
+        - Portfolio
+        - Market rates
+        - Dividends
+        - Buy/sell stocks
+        - Investment plans
+
+  utter_view_portfolio:
+    - text: "Here is your investment portfolio summary."
+
+  utter_view_investment_performance:
+    - text: "Showing your investment performance and returns."
+
+  utter_view_market_rates:
+    - text: "Here are the latest market rates."
+
+  utter_view_dividends:
+    - text: "Here are your dividend details."
+
+  utter_setup_investment_plan:
+    - text: "Your investment plan setup has started."
+
+  utter_buy_stocks:
+    - text: "Please share the stock name and quantity you want to buy."
+
+  utter_sell_stocks:
+    - text: "Please confirm the stock and quantity you want to sell."
+
+  # ==============================
+  # FIXED DEPOSITS
+  # ==============================
+
+  utter_view_fixed_deposits:
+    - text: "Here are your fixed deposit details."
+
+  utter_view_fd_interest_rate:
+    - text: "These are the current fixed deposit interest rates."
+
+  utter_open_fixed_deposit:
+    - text: "Please provide the amount and tenure to open a new fixed deposit."
+
+  utter_close_fixed_deposit:
+    - text: "Fixed deposit closure has been initiated."
+
+  utter_renew_fixed_deposit:
+    - text: "Your fixed deposit renewal request has been processed."
+
+  # ==============================
+  # BRANCH / ATM
+  # ==============================
+
+  utter_find_branch:
+    - text: "Please share your city or location to find the nearest branch."
+
+  utter_find_atm:
+    - text: "Finding nearby ATM locations for you."
+
+  utter_ask_branch_location:
+    - text: "Please enter your city name, for example: Pune, Solapur, or Mumbai."
+
+actions:
+  - action_check_balance
+  - action_view_account_details
+  - action_view_all_accounts
+  - action_view_transactions
+  - action_download_statement
+  - action_dispute_transaction
+
+  - action_transfer_money
+  - action_view_scheduled_transfers
+  - action_cancel_transfer
+
+  - action_pay_bill
+  - action_view_bills
+  - action_setup_autopay
+
+  - action_view_cards
+  - action_freeze_card
+  - action_unfreeze_card
+  - action_report_card
+  - action_activate_card
+  - action_request_new_card
+  - action_change_card_pin
+  - action_set_card_limit
+
+  - action_check_loan_balance
+  - action_view_loan_repayment
+  - action_apply_for_loan
+  - action_make_loan_payment
+  - action_view_loan_interest_rate
+  - action_request_loan_deferment
+
+  - action_view_portfolio
+  - action_view_investment_performance
+  - action_view_market_rates
+  - action_view_dividends
+  - action_setup_investment_plan
+  - action_buy_stocks
+  - action_sell_stocks
+
+  - action_view_fixed_deposits
+  - action_open_fixed_deposit
+  - action_close_fixed_deposit
+  - action_renew_fixed_deposit
+
+  - action_find_branch
+  - action_find_atm
+  - action_view_exchange_rates
+  - action_set_alert
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

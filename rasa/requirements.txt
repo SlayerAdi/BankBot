@@ -1,0 +1,22 @@
+# ============================================================
+# InfyBot v3 — Rasa Action Server Requirements
+# Python 3.10  (Rasa 3.6 is NOT compatible with Python 3.11+)
+#
+# Install inside a SEPARATE virtual environment from the backend:
+#
+#   cd rasa
+#   python3.10 -m venv rasa-venv
+#   source rasa-venv/bin/activate          # Linux / macOS
+#   rasa-venv\Scripts\activate             # Windows
+#   pip install -r requirements.txt
+# ============================================================
+
+# ── Rasa NLP Framework ───────────────────────────────────────
+rasa==3.6.21                       # Core Rasa framework (NLU + dialogue)
+rasa-sdk==3.6.2                    # Action server SDK (must match rasa major.minor)
+
+# ── MySQL connector for action server ────────────────────────
+mysql-connector-python==8.3.0      # Sync MySQL driver used inside actions.py
+
+# ── Utilities ────────────────────────────────────────────────
+python-dotenv==1.0.1               # Load rasa/.env into os.environ before startup

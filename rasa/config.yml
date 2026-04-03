@@ -1,0 +1,58 @@
+version: "3.1"
+
+recipe: default.v1
+language: en
+
+pipeline:
+  # Basic preprocessing
+  - name: WhitespaceTokenizer
+
+  # 🔥 Transformer Embeddings (CORE CHANGE)
+  - name: LanguageModelFeaturizer
+    model_name: "bert"
+    model_weights: "rasa/LaBSE"
+
+  # Optional but useful
+  - name: RegexFeaturizer
+
+  # 🔥 Main Transformer Model (Intent + Entity)
+  - name: DIETClassifier
+    epochs: 200
+    learning_rate: 0.001
+    transformer_size: 256
+    number_of_transformer_layers: 2
+    number_of_attention_heads: 4
+    constrain_similarities: true
+    entity_recognition: true
+    BILOU_flag: true
+
+  - name: EntitySynonymMapper
+
+  - name: RegexEntityExtractor
+
+  # 🔥 Retrieval-based transformer responses
+  - name: ResponseSelector
+    epochs: 150
+    constrain_similarities: true
+
+  # Fallback (strict for banking)
+  - name: FallbackClassifier
+    threshold: 0.75
+    ambiguity_threshold: 0.15
+
+policies:
+  - name: RulePolicy
+    core_fallback_threshold: 0.30
+    core_fallback_action_name: "action_default_fallback"
+    enable_fallback_prediction: true
+
+  - name: MemoizationPolicy
+    max_history: 5
+
+  # 🔥 Transformer-based dialogue policy
+  - name: TEDPolicy
+    max_history: 10
+    epochs: 200
+    constrain_similarities: true
+
+assistant_id: infybank-assistant-v2-transformer

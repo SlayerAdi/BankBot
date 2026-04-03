@@ -1,0 +1,14 @@
+action_endpoint:
+  # URL of the Rasa action server.
+  # Change the host/port to match your environment.
+  #
+  #   Local development (default):
+  #     url: "http://localhost:5055/webhook"
+  #
+  #   Docker / remote server — replace localhost with the container name or IP:
+  #     url: "http://action-server:5055/webhook"
+  #
+  # Start the action server with:
+  #   rasa run actions --port 5055
+  #
+  url: "http://localhost:5055/webhook"

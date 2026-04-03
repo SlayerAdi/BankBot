@@ -1,0 +1,53 @@
+# ============================================================
+# InfyBot v3 — Backend Requirements
+# Python 3.10+
+#
+# Install:
+#   pip install -r requirements.txt
+# ============================================================
+
+
+# ── Web Framework ────────────────────────────────────────────
+fastapi==0.111.0
+uvicorn[standard]==0.29.0          # ASGI server with WebSocket + HTTP/2 support
+
+
+# ── Authentication & Security ────────────────────────────────
+python-jose[cryptography]==3.3.0   # JWT encoding / decoding (HS256)
+passlib[bcrypt]==1.7.4             # Password hashing (bcrypt, cost factor 12)
+python-multipart==0.0.9            # Multipart form data (required by FastAPI auth)
+
+
+# ── Database ─────────────────────────────────────────────────
+aiomysql==0.2.0                    # Async MySQL driver (connection pool)
+PyMySQL==1.1.0                     # Sync MySQL fallback / migration scripts
+
+
+# ── Configuration ────────────────────────────────────────────
+python-dotenv==1.0.1               # Load .env into os.environ
+pydantic==2.7.1                    # Data validation + serialization
+pydantic-settings==2.2.1           # Pydantic-based settings from env vars
+
+
+# ── HTTP Client ──────────────────────────────────────────────
+httpx==0.27.0                      # Async HTTP client (Rasa API calls)
+requests==2.31.0                   # Sync HTTP client (Rasa admin / train endpoints)
+
+
+# ── Rate Limiting ────────────────────────────────────────────
+slowapi==0.1.9                     # Rate limiter for FastAPI (200 req/min default)
+limits==3.10.1                     # Backend for slowapi
+
+
+# ── Data / Export ────────────────────────────────────────────
+pandas==2.2.2                      # CSV export via StreamingResponse
+
+
+# ── YAML (Rasa file management) ──────────────────────────────
+PyYAML==6.0.1                      # Read / write Rasa NLU and domain YAML files
+
+
+# ── Dev / Testing (optional, comment out in production) ──────
+# pytest==8.2.0
+# pytest-asyncio==0.23.6
+# httpx==0.27.0                    # Already listed above; used for TestClient too

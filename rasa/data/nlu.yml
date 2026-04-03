@@ -1,0 +1,514 @@
+version: '3.1'
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hi there
+    - good morning
+    - good afternoon
+    - good evening
+    - hello bot
+    - start
+    - hey bankbot
+- intent: goodbye
+  examples: |
+    - bye
+    - goodbye
+    - see you
+    - exit
+    - quit
+    - talk later
+- intent: affirm
+  examples: |
+    - yes
+    - yeah
+    - yep
+    - sure
+    - okay
+    - ok
+    - correct
+    - proceed
+- intent: deny
+  examples: |
+    - no
+    - nope
+    - nah
+    - cancel
+    - stop
+    - not now
+    - never mind
+- intent: thank_you
+  examples: |
+    - thanks
+    - thank you
+    - thanks a lot
+    - appreciate it
+    - great thanks
+- intent: help
+  examples: |
+    - help
+    - I need help
+    - what can you do
+    - what services do you offer
+    - menu
+    - show commands
+    - options
+    - guide me
+- intent: bot_challenge
+  examples: |
+    - are you a bot
+    - are you human
+    - who are you
+    - what are you
+    - is this a bot
+- intent: out_of_scope
+  examples: |
+    - what's the weather
+    - tell me a joke
+    - who won the match
+    - play music
+    - order food
+- intent: check_balance
+  examples: |
+    - check balance
+    - show my balance
+    - what is my balance
+    - balance
+    - account balance
+    - check account balance
+    - how much money do I have
+- intent: view_account_details
+  examples: |
+    - show my account details
+    - account details
+    - account info
+    - view account information
+    - show account summary
+- intent: view_all_accounts
+  examples: |
+    - show all my accounts
+    - list my accounts
+    - all accounts
+    - what accounts do I have
+- intent: view_transactions
+  examples: |
+    - show my transactions
+    - transaction history
+    - recent transactions
+    - account activity
+    - show transactions
+    - latest transactions
+- intent: download_statement
+  examples: |
+    - download my statement
+    - bank statement
+    - get statement
+    - download statement
+    - monthly statement
+- intent: dispute_transaction
+  examples: |
+    - dispute a transaction
+    - unauthorized charge
+    - wrong transaction
+    - I didn't make this payment
+    - dispute charge
+- intent: transfer_money
+  examples: |
+    - transfer money
+    - send money
+    - transfer funds
+    - transfer [5000](amount) to [Rahul](recipient_name)
+    - send [1000](amount)
+    - make a transfer
+- intent: view_scheduled_transfers
+  examples: |
+    - show scheduled transfers
+    - upcoming transfers
+    - scheduled payments
+    - recurring transfers
+- intent: cancel_transfer
+  examples: |
+    - cancel transfer
+    - stop scheduled transfer
+    - remove transfer
+    - cancel payment
+- intent: pay_bill
+  examples: |
+    - pay bill
+    - pay my electricity bill
+    - bill payment
+    - pay [electricity](bill_type) bill
+    - make a bill payment
+- intent: view_bills
+  examples: |
+    - show my bills
+    - pending bills
+    - upcoming bills
+    - what bills do I have
+- intent: setup_autopay
+  examples: |
+    - setup autopay
+    - enable autopay
+    - automatic bill payment
+    - turn on autopay
+- intent: view_cards
+  examples: |
+    - show my cards
+    - view cards
+    - card
+    - cards
+    - my card
+    - debit card
+    - credit card
+    - show card
+    - card info
+    - card details
+- intent: view_card_details
+  examples: |
+    - show card details
+    - view card information
+    - card details please
+    - my card info
+- intent: freeze_card
+  examples: |
+    - freeze my card
+    - lock my card
+    - freeze card
+    - block my card
+    - temporarily disable my card
+- intent: unfreeze_card
+  examples: |
+    - unfreeze my card
+    - unlock my card
+    - unblock my card
+    - unfreeze card
+    - enable my card again
+- intent: report_lost_card
+  examples: |
+    - I lost my card
+    - lost card
+    - report lost card
+    - my card is missing
+- intent: report_stolen_card
+  examples: |
+    - my card was stolen
+    - stolen card
+    - report stolen card
+    - someone stole my card
+- intent: activate_card
+  examples: |
+    - activate my card
+    - activate card
+    - new card activation
+    - enable my new card
+- intent: request_new_card
+  examples: |
+    - request new card
+    - replacement card
+    - I need a new card
+    - issue new card
+- intent: change_card_pin
+  examples: |
+    - change card pin
+    - reset my pin
+    - change my ATM pin
+    - update card pin
+- intent: set_card_limit
+  examples: |
+    - set card limit
+    - change card limit
+    - increase my card limit
+    - lower my card limit
+- intent: cards_menu
+  examples: |
+    - card menu
+    - card options
+    - card services
+    - cards menu
+- intent: check_loan_balance
+  examples: |
+    - check loan balance
+    - loan balance
+    - how much loan is remaining
+    - outstanding loan amount
+- intent: view_loan_details
+  examples: |
+    - show my loan details
+    - loan details
+    - loan info
+    - loan
+    - loans
+    - my loans
+    - available loans
+    - show loans
+    - loan services
+- intent: view_loan_repayment
+  examples: |
+    - loan repayment schedule
+    - EMI schedule
+    - next EMI date
+    - show repayment plan
+- intent: apply_for_loan
+  examples: |
+    - apply for loan
+    - I want a loan
+    - loan application
+    - apply for [personal](loan_type) loan
+    - I need [50000](amount) loan
+- intent: make_loan_payment
+  examples: |
+    - pay my loan
+    - loan payment
+    - pay EMI
+    - make loan payment
+- intent: view_loan_interest_rate
+  examples: |
+    - loan rate
+    - loan interest rate
+    - show loan rates
+    - what is the loan interest rate
+    - personal loan rate
+    - home loan rate
+    - car loan rate
+    - current loan rates
+- intent: check_loan_eligibility
+  examples: |
+    - am I eligible for a loan
+    - loan eligibility
+    - check loan eligibility
+    - do I qualify for loan
+    - who is eligible for loan
+    - who can apply for loan
+    - can I get a loan
+    - am I eligible for personal loan
+    - loan eligibility criteria
+    - what is loan eligibility
+    - tell me if I qualify for a loan
+    - can I apply for a loan
+- intent: request_loan_deferment
+  examples: |
+    - defer my loan payment
+    - skip EMI
+    - postpone loan payment
+    - loan deferment
+- intent: loans_menu
+  examples: |
+    - loan menu
+    - loan options
+    - loans menu
+    - what can I do with loans
+- intent: view_portfolio
+  examples: |
+    - show my investment portfolio
+    - investment
+    - investments
+    - portfolio
+    - investment details
+    - my investments
+    - show investment
+    - investment account
+- intent: view_investment_performance
+  examples: |
+    - investment performance
+    - portfolio returns
+    - how are my investments doing
+    - gains and losses
+- intent: view_market_rates
+  examples: |
+    - market rates
+    - stock prices
+    - current market rates
+    - market overview
+- intent: view_dividends
+  examples: |
+    - dividends
+    - show my dividends
+    - dividend income
+    - dividend payments
+- intent: setup_investment_plan
+  examples: |
+    - setup investment plan
+    - recurring investment
+    - auto investment
+    - monthly investment plan
+- intent: buy_stocks
+  examples: |
+    - buy stocks
+    - purchase shares
+    - buy [Apple](merchant_name) stock
+    - invest in stocks
+- intent: sell_stocks
+  examples: |
+    - sell stocks
+    - sell my shares
+    - liquidate stocks
+    - sell [Tesla](merchant_name) stock
+- intent: investment_menu
+  examples: |
+    - investment menu
+    - investment options
+    - investment services
+    - investments menu
+- intent: view_fixed_deposits
+  examples: |
+    - show my fixed deposits
+    - fixed deposits
+    - FD details
+    - my FDs
+- intent: view_fd_interest_rate
+  examples: |
+    - FD interest rate
+    - fixed deposit rate
+    - show FD rates
+    - current FD rates
+- intent: open_fixed_deposit
+  examples: |
+    - open fixed deposit
+    - create FD
+    - new FD
+    - start FD with [10000](amount)
+- intent: close_fixed_deposit
+  examples: |
+    - close fixed deposit
+    - break FD
+    - close my FD
+- intent: renew_fixed_deposit
+  examples: |
+    - renew FD
+    - renew fixed deposit
+    - rollover FD
+- intent: find_branch
+  examples: |
+    - find nearest branch
+    - nearest branch
+    - branch locator
+    - near branches
+    - branch
+    - branches
+    - nearby branch
+    - bank near me
+    - locate branch
+    - branch in [Pune](branch_location)
+    - branch in [Solapur](branch_location)
+    - branch in [Mumbai](branch_location)
+- intent: provide_branch_location
+  examples: |
+    - [Pune](branch_location)
+    - [Solapur](branch_location)
+    - [Mumbai](branch_location)
+    - [Delhi](branch_location)
+    - [Bangalore](branch_location)
+    - [Hyderabad](branch_location)
+    - [Chennai](branch_location)
+    - [Nagpur](branch_location)
+- intent: find_atm
+  examples: |
+    - find nearest ATM
+    - nearest atm
+    - ATM near me
+    - locate atm
+- intent: view_exchange_rates
+  examples: |
+    - exchange rates
+    - forex rates
+    - currency rates
+    - show exchange rates
+- intent: contact_support
+  examples: |
+    - contact support
+    - customer care
+    - speak to support
+    - talk to human
+- intent: report_fraud
+  examples: |
+    - report fraud
+    - suspicious activity
+    - my account is hacked
+    - fraud detected
+- intent: set_alert
+  examples: |
+    - set alert
+    - balance alert
+    - notify me for low balance
+    - create alert
+- intent: manage_notifications
+  examples: |
+    - manage notifications
+    - notification settings
+    - alerts settings
+    - notification preferences
+- intent: confirm_transfer
+  examples: |
+    - yes transfer
+    - confirm transfer
+    - proceed with transfer
+    - yes send money
+    - transfer now
+- intent: deny_transfer
+  examples: |
+    - no cancel transfer
+    - don't transfer
+    - stop transfer
+    - no send money
+    - abort transfer
+- intent: confirm_freeze_card
+  examples: |
+    - yes freeze card
+    - confirm freeze card
+    - freeze it
+    - block my card now
+    - proceed freeze card
+- intent: deny_freeze_card
+  examples: |
+    - no don't freeze
+    - cancel freeze card
+    - don't block card
+    - stop freeze request
+    - no freeze card
+- intent: confirm_unfreeze_card
+  examples: |
+    - yes unfreeze card
+    - confirm unfreeze card
+    - proceed unfreeze
+    - yes unblock it
+    - activate my card again
+- intent: deny_unfreeze_card
+  examples: |
+    - no don't unfreeze
+    - cancel unfreeze card
+    - stop unfreeze
+    - keep card blocked
+    - no unblock card
+- intent: confirm_bill_payment
+  examples: |
+    - yes pay bill
+    - confirm bill payment
+    - proceed bill payment
+    - yes make payment
+    - pay it now
+- intent: deny_bill_payment
+  examples: |
+    - no cancel payment
+    - don't pay bill
+    - cancel bill payment
+    - stop payment
+    - no pay bill
+- intent: confirm_loan_payment
+  examples: |
+    - yes pay loan
+    - confirm loan payment
+    - proceed loan payment
+    - pay emi now
+    - yes make loan payment
+- intent: deny_loan_payment
+  examples: |
+    - no cancel loan payment
+    - don't pay loan
+    - cancel emi payment
+    - stop loan payment
+    - no pay emi
+- regex: amount
+  examples: |-
+    - \d+
